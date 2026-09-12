@@ -7,7 +7,7 @@ import { SectionId } from '../types';
 export const CoverLetterPage: React.FC = () => {
   usePageTitle(
     'Cover Letter & Executive Pitch',
-    'Executive pitch and value proposition for hiring managers and recruiters seeking an international remote Customer Support & Experience Specialist.'
+    'Executive pitch and value proposition for hiring teams seeking a Customer Success & Technical Support Specialist with 5+ years Tier 2/3 support, API/DB troubleshooting, and SLA incident management.'
   );
 
   const navigate = useNavigate();

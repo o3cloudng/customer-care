@@ -7,7 +7,7 @@ import { SectionId } from '../types';
 export const ResumePage: React.FC = () => {
   usePageTitle(
     'Resume & Curriculum Vitae',
-    'ATS-optimized resume of Olumide Oderinde, Customer Support & Experience Specialist: experience, verified metrics (97.8% CSAT), education, and skills.'
+    'ATS-optimized resume of Olumide Oderinde, Customer Success & Technical Support Specialist: Tier 2/3 incident management, SLA compliance, API & database troubleshooting, education, and certifications.'
   );
 
   const navigate = useNavigate();

@@ -6,11 +6,6 @@ import {
   SUPPORT_PRINCIPLES,
   SUPPORT_SCENARIOS 
 } from '../../data/portfolioData';
-import { RecruiterFastTrack } from '../RecruiterFastTrack';
-import { InteractiveSupportSimulator } from '../InteractiveSupportSimulator';
-import { RecruiterProofArtifacts } from '../RecruiterProofArtifacts';
-import { WallOfPraise } from '../WallOfPraise';
-import { AudioVoiceGreeting } from '../AudioVoiceGreeting';
 import { 
   HeartHandshake, 
   ArrowRight, 
@@ -29,10 +24,7 @@ import {
   Users,
   ExternalLink,
   ChevronRight,
-  Headphones,
-  Zap,
-  Calendar,
-  Award
+  Headphones
 } from 'lucide-react';
 
 interface HomeSectionProps {
@@ -51,137 +43,95 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate }) => {
   return (
     <div className="space-y-16 lg:space-y-24">
       
-      {/* 1. HERO SECTION: Human Warmth, Frontline Authority */}
-      <section className="relative pt-4 pb-4 md:pt-6 md:pb-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      {/* 1. HERO SECTION: Clean, Human, Empathetic */}
+      <section className="relative pt-4 pb-8 md:pt-8 md:pb-12">
+        <div className="max-w-4xl space-y-6">
           
-          <div className="lg:col-span-7 space-y-6">
-            
-            {/* Immediate Availability Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-semibold text-emerald-800 shadow-xs">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-              <span>Immediately Available &bull; Full-Time Remote / Contractor &bull; 0 Days Notice</span>
-            </div>
-
-            {/* Main Headline */}
-            <div className="space-y-3">
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight leading-[1.15]">
-                Turning customer frustration into <span className="text-indigo-600 underline decoration-indigo-200 decoration-wavy decoration-2">lasting loyalty</span>.
-              </h1>
-              <p className="text-base sm:text-lg text-slate-600 font-normal leading-relaxed max-w-2xl pt-1">
-                Hi, I'm <strong className="text-slate-900 font-semibold">{PERSONAL_INFO.name}</strong>. I'm a Customer Support & Experience Specialist who de-escalates high-stakes tickets, maintains <strong className="text-indigo-600 font-semibold">97.8% CSAT</strong> across 4,500+ inquiries, and writes self-serve documentation that deflects recurring churn.
-              </p>
-            </div>
-
-            {/* Quick Primary Actions for Recruiters */}
-            <div className="flex flex-wrap items-center gap-3 pt-1">
-              <a
-                href={`mailto:${PERSONAL_INFO.email}?subject=Interview%20Invitation%20-%20Customer%20Support%20Specialist`}
-                className="px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-sm inline-flex items-center gap-2 shadow-sm shadow-indigo-500/20 transition-all hover:translate-y-[-1px] focus-visible:ring-2 focus-visible:ring-indigo-500"
-                id="hero-schedule-screen-btn"
-              >
-                <Calendar className="w-4 h-4" />
-                <span>Schedule 15-Min Screen</span>
-              </a>
-
-              <button
-                onClick={() => onNavigate('resume')}
-                className="px-5 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-700 font-medium text-sm border border-slate-300/80 inline-flex items-center gap-2 shadow-xs transition-all hover:text-slate-900 focus-visible:ring-2 focus-visible:ring-indigo-500"
-                id="hero-view-resume-btn"
-              >
-                <FileText className="w-4 h-4 text-slate-500" />
-                <span>View Resume</span>
-              </button>
-
-              <button
-                onClick={() => {
-                  const el = document.getElementById('support-simulator-section');
-                  el?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                className="px-5 py-3 rounded-xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-semibold text-sm transition-colors inline-flex items-center gap-2 border border-indigo-200/70"
-                id="hero-test-live-btn"
-              >
-                <Sparkles className="w-4 h-4 text-indigo-600" />
-                <span>Test Me Live</span>
-              </button>
-            </div>
-
-            {/* Direct Copy Contact Bar */}
-            <div className="flex flex-wrap items-center gap-3 pt-1 text-xs text-slate-500">
-              <button
-                onClick={() => handleCopy(PERSONAL_INFO.email, 'email')}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-slate-300 text-slate-700 hover:text-slate-900 transition-colors shadow-2xs"
-                title="Click to copy email address"
-              >
-                <Mail className="w-3.5 h-3.5 text-indigo-500" />
-                <span>{PERSONAL_INFO.email}</span>
-                {copiedContact === 'email' ? (
-                  <span className="text-emerald-600 font-semibold flex items-center gap-0.5">
-                    <Check className="w-3 h-3" /> Copied!
-                  </span>
-                ) : (
-                  <Copy className="w-3 h-3 text-slate-400" />
-                )}
-              </button>
-
-              <button
-                onClick={() => handleCopy(PERSONAL_INFO.phone, 'phone')}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-slate-300 text-slate-700 hover:text-slate-900 transition-colors shadow-2xs"
-                title="Click to copy phone number"
-              >
-                <Phone className="w-3.5 h-3.5 text-indigo-500" />
-                <span>{PERSONAL_INFO.phone}</span>
-                {copiedContact === 'phone' ? (
-                  <span className="text-emerald-600 font-semibold flex items-center gap-0.5">
-                    <Check className="w-3 h-3" /> Copied!
-                  </span>
-                ) : (
-                  <Copy className="w-3 h-3 text-slate-400" />
-                )}
-              </button>
-            </div>
-
+          {/* Status Badge */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-200/80 text-xs font-medium text-indigo-800 shadow-xs">
+            <span className="w-2 h-2 rounded-full bg-indigo-600 animate-pulse"></span>
+            <span>Available for Full-Time Remote Customer Support Roles</span>
           </div>
 
-          {/* Right Column: Audio Voice Greeting & Recruiter Quick Hook */}
-          <div className="lg:col-span-5 space-y-4">
-            <AudioVoiceGreeting />
+          {/* Main Hero Headline */}
+          <div className="space-y-3">
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold text-slate-900 tracking-tight leading-[1.15]">
+              Turning customer frustration into <span className="text-indigo-600 underline decoration-indigo-200 decoration-wavy decoration-2">lasting loyalty</span>.
+            </h1>
+            <p className="text-lg sm:text-xl text-slate-600 font-normal leading-relaxed max-w-2xl pt-1">
+              Hi, I'm <strong className="text-slate-900 font-semibold">{PERSONAL_INFO.name}</strong>. I'm a Customer Support & Experience Specialist who believes great customer care is built on active empathy, clear communication, and rapid, stress-free problem resolution.
+            </p>
+          </div>
 
-            {/* High-Impact Mini Guarantee Card */}
-            <div className="p-4 rounded-2xl bg-gradient-to-br from-slate-50 to-indigo-50/30 border border-slate-200/80 shadow-2xs space-y-2 text-xs">
-              <div className="flex items-center gap-2 font-bold text-slate-900">
-                <Zap className="w-4 h-4 text-amber-500" />
-                <span>Day 1 Operational Guarantee</span>
-              </div>
-              <p className="text-slate-600 leading-relaxed">
-                Pre-trained across <strong className="text-slate-800">Zendesk</strong>, <strong className="text-slate-800">Intercom</strong>, and <strong className="text-slate-800">Freshdesk</strong>. Ready to answer tickets on day one with zero hand-holding on ticketing tooling.
-              </p>
-              <div className="pt-1 flex items-center gap-2 text-[11px] text-slate-500">
-                <span className="flex items-center gap-1 text-emerald-700 font-semibold">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                  Redundant 150Mbps + 4G
+          {/* Quick CTA Actions */}
+          <div className="flex flex-wrap items-center gap-3 pt-2">
+            <button
+              onClick={() => onNavigate('case-studies')}
+              className="px-5 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-sm inline-flex items-center gap-2 shadow-sm shadow-indigo-500/20 transition-all hover:translate-y-[-1px] focus-visible:ring-2 focus-visible:ring-indigo-500"
+              id="hero-view-scenarios-btn"
+            >
+              <span>Explore Support Scenarios</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
+
+            <button
+              onClick={() => onNavigate('resume')}
+              className="px-5 py-3 rounded-xl bg-white hover:bg-slate-50 text-slate-700 font-medium text-sm border border-slate-300/80 inline-flex items-center gap-2 shadow-xs transition-all hover:text-slate-900 focus-visible:ring-2 focus-visible:ring-indigo-500"
+              id="hero-view-resume-btn"
+            >
+              <FileText className="w-4 h-4 text-slate-500" />
+              <span>View Resume</span>
+            </button>
+
+            <button
+              onClick={() => onNavigate('contact')}
+              className="px-5 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-800 font-medium text-sm transition-colors inline-flex items-center gap-2"
+              id="hero-contact-btn"
+            >
+              <Mail className="w-4 h-4 text-slate-600" />
+              <span>Contact Me</span>
+            </button>
+          </div>
+
+          {/* Contact Copy Pills */}
+          <div className="flex flex-wrap items-center gap-3 pt-2 text-xs text-slate-500">
+            <button
+              onClick={() => handleCopy(PERSONAL_INFO.email, 'email')}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-slate-300 text-slate-700 hover:text-slate-900 transition-colors shadow-2xs"
+              title="Click to copy email address"
+            >
+              <Mail className="w-3.5 h-3.5 text-indigo-500" />
+              <span>{PERSONAL_INFO.email}</span>
+              {copiedContact === 'email' ? (
+                <span className="text-emerald-600 font-semibold flex items-center gap-0.5">
+                  <Check className="w-3 h-3" /> Copied!
                 </span>
-                <span>&bull;</span>
-                <span className="flex items-center gap-1 text-emerald-700 font-semibold">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                  Dual UPS Power Backup
+              ) : (
+                <Copy className="w-3 h-3 text-slate-400" />
+              )}
+            </button>
+
+            <button
+              onClick={() => handleCopy(PERSONAL_INFO.phone, 'phone')}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white border border-slate-200 hover:border-slate-300 text-slate-700 hover:text-slate-900 transition-colors shadow-2xs"
+              title="Click to copy phone number"
+            >
+              <Phone className="w-3.5 h-3.5 text-indigo-500" />
+              <span>{PERSONAL_INFO.phone}</span>
+              {copiedContact === 'phone' ? (
+                <span className="text-emerald-600 font-semibold flex items-center gap-0.5">
+                  <Check className="w-3 h-3" /> Copied!
                 </span>
-              </div>
-            </div>
+              ) : (
+                <Copy className="w-3 h-3 text-slate-400" />
+              )}
+            </button>
           </div>
 
         </div>
       </section>
 
-      {/* 2. RECRUITER FAST-TRACK 30-SECOND FIT CARD (Hooks Hiring Managers Immediately) */}
-      <section>
-        <RecruiterFastTrack 
-          onNavigateToResume={() => onNavigate('resume')}
-          onNavigateToContact={() => onNavigate('contact')}
-        />
-      </section>
-
-      {/* 3. VERIFIED SUPPORT METRICS */}
+      {/* 2. VERIFIED SUPPORT METRICS: Light, Airy Cards */}
       <section className="space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-slate-200/80 pb-3">
           <div>
@@ -193,8 +143,8 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate }) => {
               Aggregated frontline performance metrics across live chat, email, and ticketing.
             </p>
           </div>
-          <span className="text-[11px] font-medium text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md self-start sm:self-auto border border-indigo-100">
-            4,500+ Frontline Inquiries Resolved
+          <span className="text-[11px] font-medium text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md self-start sm:self-auto">
+            4,500+ Tickets Handled
           </span>
         </div>
 
@@ -225,22 +175,57 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* 4. INTERACTIVE SUPPORT SIMULATOR: TEST OLUMIDE LIVE */}
-      <section>
-        <InteractiveSupportSimulator />
+      {/* 3. THE 15-SECOND RECRUITER SNAPSHOT: Uncongested Summary */}
+      <section className="p-6 sm:p-8 rounded-2xl bg-white border border-slate-200/80 shadow-xs space-y-6">
+        <div className="space-y-1">
+          <span className="text-xs font-semibold uppercase tracking-wider text-indigo-600">
+            Recruiter & Hiring Manager Quick Pitch
+          </span>
+          <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+            Why I am an immediate asset to your Customer Care team
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="space-y-2">
+            <div className="w-8 h-8 rounded-lg bg-amber-50 text-amber-700 flex items-center justify-center font-bold text-sm">
+              01
+            </div>
+            <h3 className="text-sm font-bold text-slate-900">
+              Master of De-escalation
+            </h3>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              Skilled at turning around angry or panicked customers (e.g., unexpected billing charges, broken workflows) through active validation, calm reassurance, and speedy corrective action.
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <div className="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-700 flex items-center justify-center font-bold text-sm">
+              02
+            </div>
+            <h3 className="text-sm font-bold text-slate-900">
+              Fluent in Modern Support Tools
+            </h3>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              Deep, daily experience with Zendesk Support & Guide, Intercom inboxes, Freshdesk, Slack, Loom, and HubSpot. Quick to adopt new internal platforms with zero friction.
+            </p>
+          </div>
+
+          <div className="space-y-2">
+            <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold text-sm">
+              03
+            </div>
+            <h3 className="text-sm font-bold text-slate-900">
+              Proactive Knowledge Creator
+            </h3>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              I don't just solve tickets—I turn recurring questions into clear, searchable Help Center articles and short Loom videos that deflect incoming volume and empower users.
+            </p>
+          </div>
+        </div>
       </section>
 
-      {/* 5. TANGIBLE PROOF ARTIFACTS: KB ARTICLE, MACROS, BUG ESCALATION */}
-      <section>
-        <RecruiterProofArtifacts />
-      </section>
-
-      {/* 6. WALL OF PRAISE & VERIFIED CUSTOMER / SUPERVISOR SATISFACTION */}
-      <section>
-        <WallOfPraise />
-      </section>
-
-      {/* 7. FOUR PILLARS OF CUSTOMER CARE */}
+      {/* 4. FOUR PILLARS OF CUSTOMER CARE */}
       <section className="space-y-6">
         <div className="space-y-1">
           <h2 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
@@ -278,7 +263,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* 8. FEATURED SUPPORT SCENARIOS PREVIEW */}
+      {/* 5. FEATURED SUPPORT SCENARIOS PREVIEW */}
       <section className="space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
@@ -346,7 +331,7 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate }) => {
         </div>
       </section>
 
-      {/* 9. CALL TO ACTION: Direct Connection */}
+      {/* 6. CALL TO ACTION: Direct Connection */}
       <section className="p-8 sm:p-10 rounded-3xl bg-indigo-600 text-white shadow-md shadow-indigo-600/15 space-y-6">
         <div className="max-w-2xl space-y-3">
           <span className="text-xs font-semibold uppercase tracking-wider text-indigo-200">
@@ -356,19 +341,18 @@ export const HomeSection: React.FC<HomeSectionProps> = ({ onNavigate }) => {
             Ready to deliver exceptional care to your customers?
           </h2>
           <p className="text-sm sm:text-base text-indigo-100 leading-relaxed">
-            I am actively interviewing for international remote Customer Support Specialist, Customer Care Representative, and Customer Experience roles with immediate availability.
+            I am actively interviewing for international remote Customer Support Specialist, Customer Care Representative, and Customer Experience roles.
           </p>
         </div>
 
         <div className="flex flex-wrap items-center gap-3 pt-2">
-          <a
-            href={`mailto:${PERSONAL_INFO.email}?subject=Interview%20Invitation%20-%20Customer%20Support%20Role`}
-            className="px-6 py-3 rounded-xl bg-white text-indigo-900 font-semibold text-sm hover:bg-indigo-50 shadow-sm transition-all inline-flex items-center gap-2"
+          <button
+            onClick={() => onNavigate('contact')}
+            className="px-6 py-3 rounded-xl bg-white text-indigo-900 font-semibold text-sm hover:bg-indigo-50 shadow-sm transition-all"
             id="cta-contact-btn"
           >
-            <Calendar className="w-4 h-4 text-indigo-600" />
-            <span>Schedule Interview Screen</span>
-          </a>
+            Contact Olumide
+          </button>
           <button
             onClick={() => onNavigate('resume')}
             className="px-6 py-3 rounded-xl bg-indigo-700 hover:bg-indigo-800 text-white font-medium text-sm transition-all border border-indigo-500"

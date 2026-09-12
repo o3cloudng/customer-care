@@ -8,7 +8,7 @@ import {
   Copy, 
   Check, 
   ArrowRight,
-  HeartHandshake,
+  ShieldCheck,
   Send
 } from 'lucide-react';
 
@@ -22,23 +22,28 @@ export const CoverLetterSection: React.FC<CoverLetterSectionProps> = ({ onNaviga
   const letterText = `
 Dear Hiring Team,
 
-I am writing to express my enthusiastic interest in joining your team as a Customer Support & Experience Specialist. Having managed over 4,500 customer interactions across live chat, email, and ticketing, I have built my career around a simple philosophy: great customer support is about active empathy, clear communication, and rapid, stress-free problem resolution.
+I am writing to express my strong interest in joining your organization as a Customer Success & Technical Support Specialist. With over 5 years of hands-on experience spanning Tier 2/3 software support, technical diagnostics, and client-facing operations, I specialize in diagnosing complex SaaS issues, maintaining SLA excellence, and translating backend intricacies into clear, reassuring solutions for clients and stakeholders.
 
-In my recent frontline roles, I have consistently maintained a 97.8% average CSAT score and a sub-2-minute First Response Time on live chat. When a user reaches out frustrated—whether by an unexpected billing charge, confusion during onboarding, or an urgent account lockout—I don't offer generic canned answers. I listen deeply, validate their frustration, take personal ownership of their issue, and guide them to a clear, lasting resolution.
+In my recent role as Technical Systems Support Lead & Scrum Master at Biznovate Tech, I served as the critical link between enterprise customers and engineering teams on a Python/Django SaaS platform. Whether diagnosing root causes across REST APIs, PostgreSQL, MySQL, and Redis, or running Docker and Elasticsearch log investigations, I consistently maintained a 98%+ SLA compliance rate on high-priority tickets while reducing our average Mean Time to Resolution (MTTR) by 30%. Crucially, by pairing deep technical troubleshooting with clear, empathetic client communication, I maintained a 95% Customer Satisfaction (CSAT) score.
 
-Here is what I bring to your customer care operations:
-• Frontline Platform Fluency: Daily hands-on mastery of Zendesk Support & Guide, Intercom inboxes, Freshdesk, Slack, and Loom.
-• Proven Conflict De-escalation: An established track record of turning panicked or churn-risk customers into loyal brand advocates through calm, human reassurance.
-• Self-Serve Knowledge Creation: I don't just answer tickets; I turn recurring user questions into searchable Help Center articles and short video walkthroughs that deflect future tickets.
-• High Reliability & Timezone Flexibility: Fully equipped with a dedicated, quiet home office, redundant high-speed fiber connections, and full availability to cover US, UK, and European business hours.
+Prior to that, at TM30 Global, I owned client accounts end-to-end for web platforms, custom telemetry software, and database integrations for mobile network operator (MNO) clients. I analyzed application logs and PostgreSQL/MySQL database queries to eliminate recurring errors, coordinated incident resolution workflows across dev and product teams using Jira and Microsoft DevOps, and authored technical documentation and onboarding manuals that reduced incoming ticket volume by 20%.
 
-I would welcome the opportunity to discuss how my customer-first mindset, de-escalation skills, and reliable work ethic can elevate your customer support team. Thank you for your time and consideration.
+Here is what I bring to your technical support and customer success operations:
+• Tier 2/3 Technical Diagnostics & Debugging: Practical troubleshooting across REST APIs, PostgreSQL, MySQL, Redis, Linux/Unix environments, and Docker container logs to pinpoint root causes swiftly.
+• SLA & Incident Leadership: Proven track record of managing ticketing queues under strict SLA deadlines, facilitating Agile ceremonies in Jira, and leading escalations with zero dropped balls.
+• Customer Success & Clear Translation: Skilled at breaking down intricate architectural constraints into simple, actionable steps for non-technical users, preserving trust and driving product adoption.
+• Proactive Documentation & Ticket Deflection: Deep commitment to authoring robust knowledge base articles, standard operating procedures, and onboarding guides that deflect recurring issues.
+• Global Remote Reliability: Fully set up with dedicated remote infrastructure and proven flexibility across US, UK, and European time zones.
+
+Having earned my Bachelor of Engineering (B.Eng.) in Electronics & Electrical Engineering from LAUTECH, complemented by professional certifications in Customer Support from HubSpot and Advanced Customer Service from La Plage Meta Verse, I combine rigorous engineering analytical thinking with frontline customer empathy.
+
+I would welcome the opportunity to discuss how my technical diagnostics skills, SLA discipline, and passion for customer success can contribute to your team's goals. Thank you for your time and consideration.
 
 Warm regards,
 
 ${PERSONAL_INFO.name}
-${PERSONAL_INFO.title}
-${PERSONAL_INFO.email} | ${PERSONAL_INFO.phone}
+Customer Success & Technical Support Specialist
+${PERSONAL_INFO.email} | ${PERSONAL_INFO.phone} | https://olumide-support.vercel.app
   `.trim();
 
   const handleCopy = () => {
@@ -57,7 +62,7 @@ ${PERSONAL_INFO.email} | ${PERSONAL_INFO.phone}
             Executive Cover Letter
           </span>
           <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
-            Why I'm passionate about customer support
+            Customer Success & Technical Support Pitch
           </h1>
         </div>
 
@@ -75,52 +80,64 @@ ${PERSONAL_INFO.email} | ${PERSONAL_INFO.phone}
         
         <div className="border-b border-slate-100 pb-4 text-xs text-slate-500 space-y-1">
           <p><strong>From:</strong> {PERSONAL_INFO.name} ({PERSONAL_INFO.email})</p>
-          <p><strong>Position:</strong> Customer Support & Experience Specialist</p>
-          <p><strong>Location:</strong> {PERSONAL_INFO.location} (Remote Ready)</p>
+          <p><strong>Position:</strong> Customer Success & Technical Support Specialist</p>
+          <p><strong>Location:</strong> Nigeria (Remote | US, UK & European Time Zone Flexible)</p>
         </div>
 
         <div className="space-y-4">
           <p>Dear Hiring Team,</p>
 
           <p>
-            I am writing to express my enthusiastic interest in joining your team as a <strong className="text-slate-900 font-semibold">Customer Support & Experience Specialist</strong>. Having managed over 4,500 customer interactions across live chat, email, and ticketing, I have built my career around a simple philosophy: <em>great customer support is about active empathy, clear communication, and rapid, stress-free problem resolution.</em>
+            I am writing to express my strong interest in joining your organization as a <strong className="text-slate-900 font-semibold">Customer Success & Technical Support Specialist</strong>. With over 5 years of hands-on experience spanning Tier 2/3 software support, technical diagnostics, and client-facing operations, I specialize in diagnosing complex SaaS issues, maintaining SLA excellence, and translating backend intricacies into clear, reassuring solutions for clients and stakeholders.
           </p>
 
           <p>
-            In my recent frontline roles, I have consistently maintained a <strong className="text-slate-900 font-semibold">97.8% average CSAT score</strong> and a <strong className="text-slate-900 font-semibold">sub-2-minute First Response Time</strong> on live chat. When a user reaches out frustrated—whether by an unexpected billing charge, confusion during onboarding, or an urgent account lockout—I don't offer generic canned answers. I listen deeply, validate their frustration, take personal ownership of their issue, and guide them to a clear, lasting resolution.
+            In my recent role as <strong className="text-slate-900 font-semibold">Technical Systems Support Lead & Scrum Master</strong> at Biznovate Tech, I served as the critical link between enterprise customers and engineering teams on a Python/Django SaaS platform. Whether diagnosing root causes across REST APIs, PostgreSQL, MySQL, and Redis, or running Docker and Elasticsearch log investigations, I consistently maintained a <strong className="text-slate-900 font-semibold">98%+ SLA compliance rate</strong> on high-priority tickets while reducing our average Mean Time to Resolution (MTTR) by 30%. Crucially, by pairing deep technical troubleshooting with clear, empathetic client communication, I maintained a <strong className="text-slate-900 font-semibold">95% Customer Satisfaction (CSAT) score</strong>.
+          </p>
+
+          <p>
+            Prior to that, at <strong className="text-slate-900 font-semibold">TM30 Global</strong>, I owned client accounts end-to-end for web platforms, custom telemetry software, and database integrations for mobile network operator (MNO) clients. I analyzed application logs and PostgreSQL/MySQL database queries to eliminate recurring errors, coordinated incident resolution workflows across dev and product teams using Jira and Microsoft DevOps, and authored technical documentation and onboarding manuals that reduced incoming ticket volume by 20%.
           </p>
 
           <p className="font-semibold text-slate-900 pt-1">
-            Here is what I bring to your customer care operations:
+            Here is what I bring to your technical support and customer success operations:
           </p>
 
           <ul className="space-y-2.5 pl-2 text-xs sm:text-sm">
             <li className="flex items-start gap-2">
               <span className="text-indigo-600 font-bold">•</span>
-              <span><strong>Frontline Platform Fluency:</strong> Daily hands-on mastery of Zendesk Support & Guide, Intercom inboxes, Freshdesk, Slack, and Loom.</span>
+              <span><strong>Tier 2/3 Technical Diagnostics & Debugging:</strong> Practical troubleshooting across REST APIs, PostgreSQL, MySQL, Redis, Linux/Unix environments, and Docker container logs to pinpoint root causes swiftly.</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-indigo-600 font-bold">•</span>
-              <span><strong>Proven Conflict De-escalation:</strong> An established track record of turning panicked or churn-risk customers into loyal brand advocates through calm, human reassurance.</span>
+              <span><strong>SLA & Incident Leadership:</strong> Proven track record of managing ticketing queues under strict SLA deadlines, facilitating Agile ceremonies in Jira, and leading escalations with zero dropped balls.</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-indigo-600 font-bold">•</span>
-              <span><strong>Self-Serve Knowledge Creation:</strong> I don't just answer tickets; I turn recurring user questions into searchable Help Center articles and short video walkthroughs that deflect future tickets.</span>
+              <span><strong>Customer Success & Clear Translation:</strong> Skilled at breaking down intricate architectural constraints into simple, actionable steps for non-technical users, preserving trust and driving product adoption.</span>
             </li>
             <li className="flex items-start gap-2">
               <span className="text-indigo-600 font-bold">•</span>
-              <span><strong>High Reliability & Timezone Flexibility:</strong> Fully equipped with a dedicated, quiet home office, redundant high-speed fiber connections, and full availability to cover US, UK, and European business hours.</span>
+              <span><strong>Proactive Documentation & Ticket Deflection:</strong> Deep commitment to authoring robust knowledge base articles, standard operating procedures, and onboarding guides that deflect recurring issues.</span>
+            </li>
+            <li className="flex items-start gap-2">
+              <span className="text-indigo-600 font-bold">•</span>
+              <span><strong>Global Remote Reliability:</strong> Fully set up with dedicated remote infrastructure and proven flexibility across US, UK, and European time zones.</span>
             </li>
           </ul>
 
           <p className="pt-2">
-            I would welcome the opportunity to discuss how my customer-first mindset, de-escalation skills, and reliable work ethic can elevate your customer support team. Thank you for your time and consideration.
+            Having earned my Bachelor of Engineering (B.Eng.) in Electronics & Electrical Engineering from LAUTECH, complemented by professional certifications in Customer Support from HubSpot and Advanced Customer Service from La Plage Meta Verse, I combine rigorous engineering analytical thinking with frontline customer empathy.
+          </p>
+
+          <p>
+            I would welcome the opportunity to discuss how my technical diagnostics skills, SLA discipline, and passion for customer success can contribute to your team's goals. Thank you for your time and consideration.
           </p>
 
           <div className="pt-4 space-y-1">
             <p>Warm regards,</p>
             <p className="font-bold text-slate-900">{PERSONAL_INFO.name}</p>
-            <p className="text-xs text-slate-500">{PERSONAL_INFO.title}</p>
+            <p className="text-xs text-slate-500">Customer Success & Technical Support Specialist</p>
           </div>
         </div>
 

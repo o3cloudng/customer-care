@@ -2,23 +2,86 @@ import React, { useState } from 'react';
 import { SectionId } from '../../types';
 import { 
   PERSONAL_INFO, 
-  KEY_METRICS, 
-  EXPERIENCE_ITEMS, 
-  EDUCATION_ITEMS, 
-  CERTIFICATIONS 
+  KEY_METRICS 
 } from '../../data/portfolioData';
 import { 
   Printer, 
-  Download, 
   Mail, 
   Phone, 
   MapPin, 
   CheckCircle2, 
   Copy, 
   Check,
-  Star,
-  FileText
+  Globe2,
+  Clock
 } from 'lucide-react';
+
+interface ResumeExperienceItem {
+  role: string;
+  company: string;
+  location: string;
+  period: string;
+  achievements: string[];
+}
+
+const RESUME_EXPERIENCE: ResumeExperienceItem[] = [
+  {
+    role: "Technical Systems Support Lead & Scrum Master",
+    company: "Biznovate Tech",
+    location: "Lagos, Nigeria",
+    period: "Jan 2020 – Present",
+    achievements: [
+      "Served as Technical Support Lead and Scrum Master across a Python/Django SaaS platform, acting as the primary liaison between engineering teams and enterprise stakeholders.",
+      "Facilitated Agile sprint ceremonies (planning, stand-ups, retrospectives) using Jira and Trello, maintaining on-time delivery schedules across cross-functional teams.",
+      "Delivered Tier 2/3 incident resolution across APIs, PostgreSQL, MySQL, and Redis, maintaining 98%+ SLA compliance on high-priority tickets.",
+      "Utilized Elasticsearch and Docker log analysis to debug complex server and search issues, decreasing average Mean Time to Resolution (MTTR) by 30%.",
+      "Translated complex backend constraints into actionable guidance for non-technical clients, driving a 95% Customer Satisfaction (CSAT) score."
+    ]
+  },
+  {
+    role: "Technical Support & Systems Specialist",
+    company: "TM30 Global",
+    location: "Lagos, Nigeria",
+    period: "Jan 2019 – Jan 2020",
+    achievements: [
+      "Delivered Tier 2 and Tier 3 technical support for web platforms, custom telemetry software, and database integrations, serving as primary interface between the engineering team and mobile network operator (MNO) clients.",
+      "Owned multiple client accounts end-to-end, maintaining open communication with subscribers and resolving issues and bugs within SLA.",
+      "Analyzed application logs and PostgreSQL/MySQL database queries to identify, debug, and resolve root causes of recurring software errors.",
+      "Coordinated incident resolution workflows across development and product teams using Jira and Microsoft DevOps to maintain SLA compliance.",
+      "Authored end-user manuals, technical documentation, and onboarding guides, reducing client support ticket volume by 20%.",
+      "Managed Docker container configurations and local server environments to maintain system uptime and continuous software availability."
+    ]
+  }
+];
+
+const RESUME_EDUCATION = [
+  {
+    degree: "Bachelor of Engineering (B.Eng.), Electronics & Electrical Engineering",
+    institution: "Ladoke Akintola University of Technology (LAUTECH)",
+    location: "Ogbomoso, Nigeria",
+    year: "2007"
+  }
+];
+
+const RESUME_CERTIFICATIONS = [
+  {
+    name: "Advanced Customer Service",
+    issuer: "La Plage Meta Verse"
+  },
+  {
+    name: "Customer Support",
+    issuer: "HubSpot"
+  },
+  {
+    name: "Customer Service Fundamentals (In progress)",
+    issuer: "Elevify"
+  }
+];
+
+const RESUME_ADDITIONAL_INFO = {
+  languages: "English (Native / Professional Fluency)",
+  workPreference: "Remote, Full-time — Flexible across US, UK, and European time zones"
+};
 
 interface ResumeSectionProps {
   onNavigate: (sectionId: SectionId) => void;
@@ -34,8 +97,8 @@ export const ResumeSection: React.FC<ResumeSectionProps> = ({ onNavigate }) => {
   const handleCopyText = () => {
     const resumePlainText = `
 ${PERSONAL_INFO.name}
-${PERSONAL_INFO.title}
-Email: ${PERSONAL_INFO.email} | Phone: ${PERSONAL_INFO.phone} | Location: ${PERSONAL_INFO.location}
+Customer Success & Technical Support Specialist
+Nigeria | Remote | ${PERSONAL_INFO.phone} | ${PERSONAL_INFO.email} | https://olumide-support.vercel.app
 
 PROFESSIONAL SUMMARY
 ${PERSONAL_INFO.bio}
@@ -51,19 +114,22 @@ CORE COMPETENCIES
 - Customer Care: Conflict De-escalation, Empathetic Communication, Active Listening, Retention
 - Operations: Knowledge Base Authoring, Loom Video Walkthroughs, Slack, Notion, Cross-functional Handoffs
 
-WORK EXPERIENCE
-${EXPERIENCE_ITEMS.map(item => `
-${item.role} — ${item.company} (${item.period})
-${item.summary}
-Key Achievements:
-${item.achievements.map(a => `• ${a}`).join('\n')}
+PROFESSIONAL EXPERIENCE
+${RESUME_EXPERIENCE.map(item => `
+${item.role} | ${item.period}
+${item.company} — ${item.location}
+${item.achievements.map(a => `${a}`).join('\n')}
 `).join('\n')}
 
 EDUCATION
-${EDUCATION_ITEMS.map(e => `${e.degree} - ${e.institution}`).join('\n')}
+${RESUME_EDUCATION.map(e => `${e.degree}\n${e.institution}, ${e.location} — ${e.year}`).join('\n')}
 
-CERTIFICATIONS
-${CERTIFICATIONS.map(c => `${c.name} (${c.issuer})`).join('\n')}
+CERTIFICATIONS & TRAINING
+${RESUME_CERTIFICATIONS.map(c => `${c.name} - ${c.issuer}`).join('\n')}
+
+ADDITIONAL INFORMATION
+Languages: ${RESUME_ADDITIONAL_INFO.languages}
+Work Preference: ${RESUME_ADDITIONAL_INFO.workPreference}
     `.trim();
 
     navigator.clipboard.writeText(resumePlainText);
@@ -183,14 +249,14 @@ ${CERTIFICATIONS.map(c => `${c.name} (${c.issuer})`).join('\n')}
           </div>
         </div>
 
-        {/* Experience Section */}
+        {/* Professional Experience Section */}
         <div className="space-y-6">
           <h3 className="text-xs font-bold uppercase tracking-wider text-indigo-700">
-            Work Experience
+            Professional Experience
           </h3>
 
           <div className="space-y-6">
-            {EXPERIENCE_ITEMS.map((item, idx) => (
+            {RESUME_EXPERIENCE.map((item, idx) => (
               <div key={idx} className="space-y-2">
                 <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
                   <div>
@@ -203,10 +269,6 @@ ${CERTIFICATIONS.map(c => `${c.name} (${c.issuer})`).join('\n')}
                     {item.period} | {item.location}
                   </span>
                 </div>
-
-                <p className="text-xs text-slate-600 italic">
-                  {item.summary}
-                </p>
 
                 <ul className="space-y-1.5 pt-1">
                   {item.achievements.map((ach, aIdx) => (
@@ -227,10 +289,10 @@ ${CERTIFICATIONS.map(c => `${c.name} (${c.issuer})`).join('\n')}
             <h3 className="text-xs font-bold uppercase tracking-wider text-indigo-700">
               Education
             </h3>
-            {EDUCATION_ITEMS.map((edu, idx) => (
-              <div key={idx} className="text-xs text-slate-700">
+            {RESUME_EDUCATION.map((edu, idx) => (
+              <div key={idx} className="text-xs text-slate-700 space-y-0.5">
                 <p className="font-semibold text-slate-900">{edu.degree}</p>
-                <p className="text-slate-600">{edu.institution}, {edu.location}</p>
+                <p className="text-slate-600">{edu.institution}, {edu.location} — {edu.year}</p>
               </div>
             ))}
           </div>
@@ -240,13 +302,36 @@ ${CERTIFICATIONS.map(c => `${c.name} (${c.issuer})`).join('\n')}
               Certifications & Training
             </h3>
             <ul className="space-y-1 text-xs text-slate-700">
-              {CERTIFICATIONS.map((cert, idx) => (
+              {RESUME_CERTIFICATIONS.map((cert, idx) => (
                 <li key={idx} className="flex items-center gap-1.5">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                   <span>{cert.name} — {cert.issuer}</span>
                 </li>
               ))}
             </ul>
+          </div>
+        </div>
+
+        {/* Additional Information */}
+        <div className="pt-4 border-t border-slate-200 space-y-2">
+          <h3 className="text-xs font-bold uppercase tracking-wider text-indigo-700">
+            Additional Information
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-700">
+            <div className="flex items-start gap-2">
+              <Globe2 className="w-4 h-4 text-indigo-600 mt-0.5 shrink-0" />
+              <div>
+                <span className="font-semibold text-slate-900 block">Languages:</span>
+                <span>{RESUME_ADDITIONAL_INFO.languages}</span>
+              </div>
+            </div>
+            <div className="flex items-start gap-2">
+              <Clock className="w-4 h-4 text-indigo-600 mt-0.5 shrink-0" />
+              <div>
+                <span className="font-semibold text-slate-900 block">Work Preference:</span>
+                <span>{RESUME_ADDITIONAL_INFO.workPreference}</span>
+              </div>
+            </div>
           </div>
         </div>
 
